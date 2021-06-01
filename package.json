@@ -1,0 +1,30 @@
+{
+  "name": "projeto_billinho",
+  "version": "1.0.0",
+  "description": "API for enrollment system and educational tuition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavorodr/Projeto_Billinho.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "mongodb"
+  ],
+  "author": "Gustavo Rodrigues Gomes Costa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavorodr/Projeto_Billinho/issues"
+  },
+  "homepage": "https://github.com/gustavorodr/Projeto_Billinho#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
