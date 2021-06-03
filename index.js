@@ -1,3 +1,4 @@
+const { json } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -19,10 +20,29 @@ mongoose.connect('mongodb://localhost/billinhoDB', {
     console.log("Database connection error");
 });
 
-//rota simples de apresentação
+//rota para listagem de todo o banco de dados
 server.get("/", (req, res) => {
-    return res.json({title: "API_Billinho"})
+    Instituicao.find({}).then((instituicao) =>{
+        return res.json(instituicao);
+    }).catch((err) =>{
+        return res.status(400).json({
+            error: true,
+            message: "Empty database"
+        })
+    })
 });
+
+//rota para busca pelo id da instituição no banco
+server.get("/instituicao/:id", (req, res) =>{
+    Instituicao.findOne({_id: req.params.id}).then((instituicao) => {
+        return res.json(instituicao);
+    }).catch((err) => {
+        return res.status(400).json({
+            error: true,
+            message: "id doesn't match any record"
+        })
+    })
+})
 
 //rota para cadastro de instituicao
 server.post("/instituicao", (req, res) => {
