@@ -1,6 +1,7 @@
 const { json } = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('Cors');
 
 //inclui modelo de dados da intituicao
 require("./models/Instituicao");
@@ -10,8 +11,16 @@ const Instituicao = mongoose.model('instituicao');
 const server = express();
 server.use(express.json());
 
+//middleware para controle de acesso (obs: mudar "*" para endereço da aplicação que ira utilizar os dados da API)
+server.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    server.use(cors());
+    next();
+});
+
 //conecta ou cria banco de dados no MongoDB
-mongoose.connect('mongodb://localhost/billinhoDB', {
+mongoose.connect('mongodb://localhost:27017/local', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {

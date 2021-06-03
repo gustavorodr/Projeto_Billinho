@@ -11,13 +11,15 @@ npm install -D nodemon
 # Rodar o projeto usando o nodemon.
 nodemon index.js
 
-
 # banco de dados não relacinal MongoDB. (obs: instalar na sua maquina antes de rodar o comando)
 //https://www.mongodb.com/try/download/community
 npm install --save mongodb
 
 # Mongoose traduz os dados do banco de dados para objetos JavaScript.
 npm install --save mongoose
+
+# Cors Faz um controle de acesso simples
+npm instal cors
 
 ---------------------------------------------
 COMO RODAR O PROJETO BAIXADO
