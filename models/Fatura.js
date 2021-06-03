@@ -14,11 +14,6 @@ const Fatura = new mongoose.Schema({
         required: true
     },
     Status:{
-        type: Number,
-        get: v => Math.round(v),
-        set: v => Math.round(v)
-    },
-    Genero:{
         type: String,
         enum: ['Aberta', 'Atrasada', 'Paga'],
         default: 'Aberta',
