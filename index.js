@@ -28,8 +28,8 @@ server.get("/", (req, res) => {
         return res.status(400).json({
             error: true,
             message: "Empty database"
-        })
-    })
+        });
+    });
 });
 
 //rota para busca pelo id da instituição no banco
@@ -40,9 +40,9 @@ server.get("/instituicao/:id", (req, res) =>{
         return res.status(400).json({
             error: true,
             message: "id doesn't match any record"
-        })
-    })
-})
+        });
+    });
+});
 
 //rota para cadastro de instituicao
 server.post("/instituicao", (req, res) => {
@@ -50,14 +50,32 @@ server.post("/instituicao", (req, res) => {
         if(err) return res.status(400).json({
             error: true,
             message: "Error when registering in the database"
-        })
-        return res.status(200).json({
-            error: false,
-            message: "Registration in the database done successfully"
-        })
-    })
+        });
+        return res.json({error: false});
+    });
 });
 
+//rota para edição das instituições no banco
+server.put("/instituicao/:id", (req, res) => {
+    const instituicao = Instituicao.updateOne({ _id: req.params.id}, req.body, (err) => {
+        if(err) return res.status(400).json({
+            error: true,
+            message: "Error editing the record in the database"
+        });
+        return res.json({error: false});
+    });
+});
+
+//rota para apagar instituições do banco
+server.delete("/instituicao/:id", (req, res) =>{
+    const instituicao = Instituicao.deleteOne({_id: req.params.id}, (err) =>{
+        if(err) return res.status(400).json({
+            error: true,
+            message: "Error deleting record in database"
+        });
+        return res.json({error: false});
+    });
+});
 
 server.listen(8080, () =>{
     console.log("Server running at: http://localhost:8080");
