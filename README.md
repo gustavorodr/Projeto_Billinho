@@ -21,4 +21,13 @@ npm install --save mongoose
 
 ---------------------------------------------
 COMO RODAR O PROJETO BAIXADO
+---------------------------------------------
+
+# instala dependencias
+npm install
+
+# roda o progeto
+nodemon index.js
+
+
 
