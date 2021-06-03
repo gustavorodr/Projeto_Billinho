@@ -20,9 +20,10 @@ server.use((req, res, next) => {
 });
 
 //conecta ou cria banco de dados no MongoDB
-mongoose.connect('mongodb://localhost:27017/local', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect('mongodb://localhost:27017/billinhoDB', {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 }).then(() => {
     console.log("Successful database connection");
 }).catch((erro) => {
