@@ -189,13 +189,13 @@ server.post("/matriculaCad", (req, res) => {
         var dia = Number(data.getDate()).padStart(2, '0');
         var mes = Number(data.getMonth() + 1).padStart(2, '0');
         var ano = Number(data.getFullYear());
+        if(dia<=req.body.diaVencimento){
+            mes++;
+        }
         for(var i = 0; i < req.body.quantidadeFaturas; i++){
             //define a data do pagamento
             var dataPagamento = new Date();
             mes+=i;
-            if(dia<=req.body.diaVencimento){
-                mes++;
-            }
             if(mes == 13){
                 mes=1;
                 ano++;
